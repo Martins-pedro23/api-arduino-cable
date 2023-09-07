@@ -1,5 +1,4 @@
-
-#
+<h1 align="center">API Arduino Cable<h1>
 
 ### This API is being developed for the Laboratorio de Robotica of IFSP Itapetiniga, it intends to connect an web application with an arduino via cable using the Serial Port as a way of communication. This project will compose a future face rocognation controler for arduinos. 
 
