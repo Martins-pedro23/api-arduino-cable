@@ -1,8 +1,8 @@
-import { FastifyInstance, FastifyReply, FastifyRequest, FastifyTypeProvider } from "fastify";
-import { mensageSender } from "../functions/teste.index";
+import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import mensageSender from "../actions/cableSerialPort";
 
 interface Mensage {
-    mensage: string;
+  mensage: string;
 }
 
 async function routes(fastify: FastifyInstance) {
@@ -10,10 +10,13 @@ async function routes(fastify: FastifyInstance) {
     return { hello: "world" };
   });
 
-  fastify.post("/send", async (request: FastifyRequest<{Body:Mensage}>, reply:FastifyReply) => {
-    const result = mensageSender(request.body.mensage);
-    reply.code(200).send({message: result});
-  });
+  fastify.post(
+    "/send",
+    async (request: FastifyRequest<{ Body: Mensage }>, reply: FastifyReply) => {
+      const result = mensageSender.mensageSender(request.body.mensage);
+      reply.code(200).send({ message: result });
+    }
+  );
 }
 
 export default routes;
